@@ -1,12 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 function App() {
 
   // todolist 관리
-  const [todos, setTodos] = useState({});
+  const [todos, setTodos] = useState("");
 
   useEffect(() => {
     axios.get('http://localhost:3001/todolist/')
@@ -45,22 +44,13 @@ function App() {
     SetInputvalue("");
   }
 
-  // todo 삭제하기
-  const { id } = useParams();
-
-  function DeleteTodo(){
-
-    console.log(id);
-
-    axios.delete(`http://localhost:3001/todolist/${id}`)
-    .then((Response) => {
-      console.log(Response.data);
+  const DeleteTodo = (id) => {
+    
+    fetch(`http://localhost:3001/todolist/${id}`, {
+      method: "DELETE"
     })
-    .catch((Error) => {
-      console.log(Error);
-    })
-
-    // window.location.reload();
+    
+    window.location.reload();
   }
 
   return (
@@ -75,7 +65,7 @@ function App() {
         {todos && todos.length > 0 ?
           todos.map((el) => {
             return (
-              <li key={el.id}> {el.body} <button className='btn'>완료</button> <button className='btn' onClick={DeleteTodo}>삭제</button> </li>
+              <li key={el.id}> {el.body} <button className='btn'>완료</button> <button className='btn' onClick={() => DeleteTodo(el.id)}>삭제</button> </li>
             )
           }) : <li></li>}
       </ul>
