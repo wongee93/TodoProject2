@@ -1,6 +1,6 @@
-## TodoList
+# TodoList
 
-### 구현 기능
+## 구현 기능
 
 - CRUD(C/R/D 구현 완료)
 - 목업서버 사용(json server)
@@ -10,7 +10,7 @@
 - Update(checked) 기능 구현 예정
 - Styled Component 적용 예정
 
-### 화면
+## 화면
 
 1. Create
 
