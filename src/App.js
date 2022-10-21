@@ -59,13 +59,13 @@ function App() {
 
       <div className='title'>Todo List</div>
 
-      <div className='inputline'><input onChange={InputValue}></input> <button onClick={AddTodo}>추가</button></div>
+      <div className='inputline'><input onChange={InputValue}></input> <button className='addbtn' onClick={AddTodo}>Add</button></div>
 
       <ul className='list'>
         {todos && todos.length > 0 ?
           todos.map((el) => {
             return (
-              <li key={el.id}> {el.body} <button className='btn'>완료</button> <button className='btn' onClick={() => DeleteTodo(el.id)}>삭제</button> </li>
+              <li key={el.id}> <button className='checkbtn'>Check</button> {el.body} <button className='delbtn' onClick={() => DeleteTodo(el.id)}>Del</button> </li>
             )
           }) : <li></li>}
       </ul>
