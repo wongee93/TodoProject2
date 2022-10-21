@@ -1,0 +1,44 @@
+{
+  "todolist": [
+    {
+      "id": 1,
+      "body": "React 강의 듣기",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "body": "회고 블로그 작성하기",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "body": "Redux 개념학습",
+      "checked": false
+    },
+    {
+      "id": 4,
+      "body": "안녕하세요",
+      "checked": false
+    },
+    {
+      "id": 5,
+      "body": "안녕하세요",
+      "checked": false
+    },
+    {
+      "id": 6,
+      "body": "dddd",
+      "checked": false
+    },
+    {
+      "id": 7,
+      "body": "언뇽",
+      "checked": false
+    },
+    {
+      "id": 8,
+      "body": "ㅁㅇㅁㄴㅇ",
+      "checked": false
+    }
+  ]
+}
