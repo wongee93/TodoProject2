@@ -1,11 +1,23 @@
+import React from 'react'
 import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 
+
 function App() {
 
+  // 객체 useState 활용
+  // type Todo = { id: number; text: string; done: boolean };
+  // const [todos, setTodos] = useState<Todo[]>([]);
+
   // todolist 관리
-  const [todos, setTodos] = useState("");
+  const [todos, setTodos] = useState<Todos[]>([]);
+
+  interface Todos {
+    id: number
+    body: string
+    checked: boolean
+  }
 
   useEffect(() => {
     axios.get('http://localhost:3001/todolist/')
@@ -22,34 +34,35 @@ function App() {
   // Inputvalue 관리
   const [inputvalue, SetInputvalue] = useState("");
 
-  function InputValue(e){
+  function InputValue(e: React.ChangeEvent<HTMLInputElement>) { // event 매개변수 지정
     SetInputvalue(e.target.value);
   }
 
   // todo 추가하기
-  function AddTodo(){
+  function AddTodo() {
     axios.post('http://localhost:3001/todolist/', {
-      id : todos.length+1,
-      body : inputvalue,
-      checked : false
+      id: todos.length + 1,
+      body: inputvalue,
+      checked: false
     })
-    .then((Response) => {
-      setTodos(...Response.data,Response.data);
-    })
-    .catch((Error) => {
-      console.log(Error);
-    })
+      .then((Response) => {
+        // setHistory([...newHistory]);
+        setTodos(Response.data);
+      })
+      .catch((Error) => {
+        console.log(Error);
+      })
 
     window.location.reload();
     SetInputvalue("");
   }
 
-  const DeleteTodo = (id) => {
-    
+  const DeleteTodo = (id: number) => {
+
     fetch(`http://localhost:3001/todolist/${id}`, {
       method: "DELETE"
     })
-    
+
     window.location.reload();
   }
 
